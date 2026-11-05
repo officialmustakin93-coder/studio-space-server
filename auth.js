@@ -16,6 +16,14 @@ export const auth = betterAuth({
 
   database: mongodbAdapter(db, { client: mongoClient }),
 
+  // Cross-site session cookie configuration
+  advanced: {
+    defaultCookieAttributes: {
+      sameSite: "none",
+      secure: true,
+    },
+  },
+
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 8,
